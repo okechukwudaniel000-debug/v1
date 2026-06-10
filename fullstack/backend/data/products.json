@@ -1,0 +1,182 @@
+[
+  {
+    "id": "s25u",
+    "category": "Samsung Galaxy",
+    "name": "Galaxy S25 Ultra",
+    "description": "Titanium build, 200MP camera system, built-in S-Pen, Galaxy AI.",
+    "price": "₦1,110,000",
+    "specs": [
+      { "label": "Processor", "value": "SD 8 Gen 4" },
+      { "label": "Display", "value": "6.8\" AMOLED 2X" },
+      { "label": "Camera", "value": "200MP Quad" },
+      { "label": "Battery", "value": "5000mAh" }
+    ],
+    "colors": ["rgba(14,30,120,.38)", "rgba(5,12,55,.45)"],
+    "type": "phone"
+  },
+  {
+    "id": "i16pm",
+    "category": "Apple iPhone",
+    "name": "iPhone 16 Pro Max",
+    "description": "A18 Pro chip, 64MP Fusion Camera, Action Button, titanium design.",
+    "price": "₦1,200,000",
+    "specs": [
+      { "label": "Chipset", "value": "A18 Pro Bionic" },
+      { "label": "Display", "value": "6.9\" ProMotion" },
+      { "label": "Storage", "value": "256GB - 1TB" },
+      { "label": "Video", "value": "4K 120fps ProRes" }
+    ],
+    "colors": ["rgba(170,175,200,.12)", "rgba(90,95,115,.18)"],
+    "type": "phone"
+  },
+  {
+    "id": "aw10",
+    "category": "Smart Watch",
+    "name": "Apple Watch Series 10",
+    "description": "Thinnest Apple Watch ever, advanced health monitoring, 18 hr battery.",
+    "price": "₦350,000",
+    "specs": [
+      { "label": "Sensor", "value": "Blood Oxygen" },
+      { "label": "Display", "value": "OLED Always-On" },
+      { "label": "Rating", "value": "WR50 Water Res." },
+      { "label": "Battery", "value": "18-36 Hours" }
+    ],
+    "colors": ["rgba(130,140,200,.1)", "rgba(70,80,140,.15)"],
+    "type": "watch"
+  },
+  {
+    "id": "gb3p",
+    "category": "Wireless Earbuds",
+    "name": "Galaxy Buds 3 Pro",
+    "description": "Intelligent ANC, 3-way speaker system, 360° audio, 30 hr total battery.",
+    "price": "₦98,000",
+    "specs": [
+      { "label": "Audio", "value": "Hi-Fi 24-bit" },
+      { "label": "ANC", "value": "Intelligent" },
+      { "label": "Connectivity", "value": "BT 5.4" },
+      { "label": "Battery", "value": "30hrs w/ Case" }
+    ],
+    "colors": ["rgba(20,40,160,.22)", "rgba(8,18,80,.28)"],
+    "type": "buds"
+  },
+  {
+    "id": "i15",
+    "category": "Apple iPhone",
+    "name": "iPhone 15",
+    "description": "48MP main camera, Dynamic Island, USB-C, A16 Bionic chip.",
+    "price": "₦850,000",
+    "specs": [
+      { "label": "Chip", "value": "A16 Bionic" },
+      { "label": "Display", "value": "Super Retina XDR" },
+      { "label": "Camera", "value": "48MP Main" },
+      { "label": "Port", "value": "USB-C" }
+    ],
+    "colors": ["rgba(18,94,160,.16)", "rgba(140,92,255,.14)"],
+    "type": "phone"
+  },
+  {
+    "id": "ga55",
+    "category": "Samsung Galaxy",
+    "name": "Galaxy A55",
+    "description": "50MP OIS camera, Exynos 1480, IP67 water resistance, Super AMOLED.",
+    "price": "₦320,000",
+    "specs": [
+      { "label": "Processor", "value": "Exynos 1480" },
+      { "label": "Display", "value": "120Hz AMOLED" },
+      { "label": "Protection", "value": "IP67 Rated" },
+      { "label": "Battery", "value": "5000mAh" }
+    ],
+    "colors": ["rgba(34,197,94,.16)", "rgba(16,185,129,.14)"],
+    "type": "phone"
+  },
+  {
+    "id": "mbpm4",
+    "category": "Apple Laptop",
+    "name": "MacBook Pro M4",
+    "description": "The world's most advanced laptop for workflows that demand extreme performance.",
+    "price": "₦2,450,000",
+    "specs": [
+      { "label": "Processor", "value": "Apple M4 Max" },
+      { "label": "Display", "value": "14\" Liquid Retina" },
+      { "label": "Memory", "value": "36GB - 128GB" },
+      { "label": "Battery", "value": "Up to 22 Hours" }
+    ],
+    "colors": ["rgba(100,100,100,.1)", "rgba(40,40,40,.2)"],
+    "type": "laptop"
+  },
+  {
+    "id": "ippm4",
+    "category": "Apple Tablet",
+    "name": "iPad Pro 13\" (M4)",
+    "description": "Unbelievable performance and the world's most advanced display.",
+    "price": "₦1,550,000",
+    "specs": [
+      { "label": "Display", "value": "Ultra Retina XDR" },
+      { "label": "Chip", "value": "Apple M4" },
+      { "label": "Design", "value": "5.1mm Ultra Thin" },
+      { "label": "Input", "value": "Pencil Pro Support" }
+    ],
+    "colors": ["rgba(188,0,255,.1)", "rgba(60,0,100,.2)"],
+    "type": "tablet"
+  },
+  {
+    "id": "cgar",
+    "category": "Smart Wearable",
+    "name": "Cyber Glass AR",
+    "description": "Next-gen smart eyeglasses with integrated AR display and AI vision.",
+    "price": "₦420,000",
+    "specs": [
+      { "label": "Visuals", "value": "HUD AR Overlay" },
+      { "label": "Camera", "value": "12MP Ultra-wide" },
+      { "label": "AI", "value": "Voice Controlled" },
+      { "label": "Audio", "value": "Open-ear Spatial" }
+    ],
+    "colors": ["rgba(0,242,255,.1)", "rgba(0,80,120,.2)"],
+    "type": "glasses"
+  },
+  {
+    "id": "dxps16",
+    "category": "Dell Laptop",
+    "name": "Dell XPS 16 (2026)",
+    "description": "The iconic seamless design powered by the latest Intel Core Ultra processors.",
+    "price": "₦2,150,000",
+    "specs": [
+      { "label": "Processor", "value": "Core Ultra 9 185H" },
+      { "label": "Graphics", "value": "RTX 4070 8GB" },
+      { "label": "Display", "value": "4K OLED Touch" },
+      { "label": "Design", "value": "Seamless Glass" }
+    ],
+    "colors": ["rgba(200,200,200,.1)", "rgba(80,80,80,.15)"],
+    "type": "laptop"
+  },
+  {
+    "id": "am18r2",
+    "category": "Gaming Laptop",
+    "name": "Alienware m18 R2",
+    "description": "Maximum performance with an 18-inch display and elite Alienware Cryo-tech.",
+    "price": "₦3,850,000",
+    "specs": [
+      { "label": "Processor", "value": "i9-14900HX" },
+      { "label": "Graphics", "value": "RTX 4090 16GB" },
+      { "label": "Refresh", "value": "480Hz QHD+" },
+      { "label": "Cooling", "value": "Cryo-Tech Liquid" }
+    ],
+    "colors": ["rgba(188,0,255,.15)", "rgba(50,0,100,.2)"],
+    "type": "laptop"
+  },
+  {
+    "id": "ps6",
+    "category": "Gaming Console",
+    "name": "PlayStation 6",
+    "description": "The future of immersive gaming with 16K visuals and advanced neural feedback.",
+    "price": "₦950,000",
+    "specs": [
+      { "label": "Resolution", "value": "Native 16K HDR" },
+      { "label": "Graphics", "value": "Ray Tracing Gen 3" },
+      { "label": "Storage", "value": "4TB Quantum SSD" },
+      { "label": "Feature", "value": "Neural Haptic Link" }
+    ],
+    "colors": ["rgba(255,255,255,.05)", "rgba(0,242,255,.1)"],
+    "type": "console"
+  }
+]

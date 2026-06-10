@@ -1,0 +1,2339 @@
+html
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daniel Gadgets — Your trusted destination for premium smartphones, accessories, and cutting-edge technology. Authentic Samsung and Apple devices.">
+<meta name="keywords" content="Samsung, iPhone, Apple, gadgets, smartphones, Nigeria, premium technology">
+<title>Daniel Gadgets | Premium Technology Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   RESET & ROOT
+============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg)}
+html::-webkit-scrollbar{width:5px}
+html::-webkit-scrollbar-track{background:var(--bg)}
+html::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+:root{
+  --bg:#020205;
+  --bg2:#05050a;
+  --bg3:#0a0a15;
+  --txt:#e0e8ff;
+  --txt2:rgba(200,210,255,.7);
+  --txt3:rgba(180,190,255,.45);
+  --accent:#1428A0;
+  --accent2:#1e40d4;
+  --accent3:#2650f0;
+  --accent-cyan:#00f2ff;
+  --accent-violet:#bc00ff;
+  --silver:#C4C8D8;
+  --silver2:rgba(196,200,216,.55);
+  --border:rgba(255,255,255,.08);
+  --border2:rgba(0,242,255,.2);
+  --glass:rgba(255,255,255,.03);
+  --glass2:rgba(255,255,255,.06);
+  --glass-border:rgba(255,255,255,0.1);
+  --glow-blue:rgba(20,40,160,.4);
+  --glow-cyan:rgba(0,242,255,.3);
+  --glow-violet:rgba(188,0,255,.25);
+  --hud-line:rgba(0,242,255,.15);
+  --menu-bg:rgba(2,2,6,.98);
+  --shadow:0 8px 40px rgba(0,0,0,.8);
+  --nav:72px;
+  --mw:1240px;
+  --r:4px;
+  --r2:12px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+[data-theme="light"]{
+  --bg:#f8fafc;
+  --bg2:#f1f5f9;
+  --bg3:#ffffff;
+  --txt:#0f172a;
+  --txt2:#475569;
+  --txt3:#94a3b8;
+  --accent:#1428A0;
+  --accent2:#1e40d4;
+  --accent3:#2650f0;
+  --accent-cyan:#0ea5e9;
+  --accent-violet:#8b5cf6;
+  --silver:#475569;
+  --silver2:rgba(71,85,105,.5);
+  --border:rgba(15,23,42,.08);
+  --border2:rgba(20,40,160,.2);
+  --glass:rgba(255,255,255,.7);
+  --glass2:rgba(255,255,255,.9);
+  --glass-border:rgba(15,23,42,0.05);
+  --glow-blue:rgba(20,40,160,.1);
+  --glow-cyan:rgba(14,165,233,.1);
+  --glow-violet:rgba(139,92,246,.1);
+  --menu-bg:rgba(248,250,252,.98);
+  --shadow:0 8px 40px rgba(15,23,42,.1);
+}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--txt);
+  overflow-x:hidden;
+  line-height:1.7;
+  transition:background .4s var(--ease),color .4s var(--ease);
+}
+
+/* CYBER GRID */
+.hud-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--accent-cyan);
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 5;
+  transition: all 0.4s var(--ease);
+}
+section:hover .hud-corner {
+  opacity: 0.8;
+  width: 30px;
+  height: 30px;
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 15px var(--glow-violet);
+}
+.hud-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.hud-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.hud-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.hud-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+/* MAGNETIC INTERACTION */
+.btn-p, .btn-s, .btn-v {
+  transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease);
+  will-change: transform;
+}
+
+/* SHIMMER EFFECT */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  50%, 100% { transform: translateX(100%) skewX(-15deg); }
+}
+.btn-p::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shimmer 3s infinite;
+  z-index: 1;
+}
+
+/* PRODUCT SPEC OVERLAY (Refined slide-up) */
+.pcard { position: relative; cursor: pointer; }
+.pspecs {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 65%;
+  background: rgba(2,2,8,0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  transform: translateY(100%);
+  transition: transform 0.5s var(--ease);
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border2);
+}
+.pcard:hover .pspecs {
+  transform: translateY(0);
+}
+.pspec-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+}
+.pspec-lbl { font-size: 0.65rem; color: var(--txt3); text-transform: uppercase; letter-spacing: 0.1em; }
+.pspec-val { font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600; }
+
+/* STOCK BADGE */
+.stock-badge {
+  position: absolute;
+  top: 12px; right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(0,242,255,0.1);
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 5;
+}
+.stock-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-cyan);
+  animation: pulse-stock 1.5s infinite;
+}
+@keyframes pulse-stock {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* CATEGORY FILTERS */
+.p-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.f-btn {
+  padding: 10px 22px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--txt2);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s var(--ease);
+}
+.f-btn:hover, .f-btn.active {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  background: var(--glass2);
+  box-shadow: 0 0 15px var(--glow-cyan);
+}
+
+a{text-decoration:none;color:inherit}
+
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+img{display:block;max-width:100%}
+
+/* ============================================================
+   AUTH MODAL
+============================================================ */
+.auth-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+.auth-overlay.on { opacity: 1; pointer-events: all; }
+
+.auth-modal {
+  width: min(420px, 92vw);
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r2);
+  padding: 40px;
+  position: relative;
+  transform: translateY(30px);
+  transition: transform 0.5s var(--ease);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px var(--glow-blue);
+  overflow: hidden;
+}
+.auth-overlay.on .auth-modal { transform: translateY(0); }
+
+.auth-modal::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet));
+}
+
+.auth-header { text-align: center; margin-bottom: 30px; }
+.auth-title { font-size: 1.8rem; color: var(--txt); margin-bottom: 8px; }
+.auth-sub { font-size: 0.85rem; color: var(--txt2); }
+
+.auth-form { display: flex; flex-direction: column; gap: 20px; }
+.auth-input-group { display: flex; flex-direction: column; gap: 8px; }
+.auth-label { font-size: 0.75rem; font-weight: 700; color: var(--txt3); text-transform: uppercase; letter-spacing: 0.1em; }
+.auth-input {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: var(--txt);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s var(--ease);
+}
+.auth-input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  background: var(--glass2);
+  box-shadow: 0 0 15px var(--glow-cyan);
+}
+
+.auth-btn {
+  margin-top: 10px;
+  padding: 15px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.3s var(--ease);
+}
+.auth-btn:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 25px var(--glow-blue); }
+
+.auth-switch { text-align: center; margin-top: 25px; font-size: 0.85rem; color: var(--txt2); }
+.auth-switch-btn { color: var(--accent-cyan); font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+.auth-close {
+  position: absolute; top: 15px; right: 15px;
+  width: 32px; height: 32px;
+  border-radius: 50%; border: 1px solid var(--border);
+  background: var(--glass2); color: var(--txt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; transition: all 0.3s var(--ease);
+}
+.auth-close:hover { background: var(--accent-violet); border-color: var(--accent-violet); color: #fff; }
+
+#registerForm { display: none; }
+
+/* USER PROFILE ICON */
+.user-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, #0a164a, #1428A0);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 1rem; font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 15px rgba(20, 40, 160, 0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ============================================================
+   TYPOGRAPHY
+============================================================ */
+h1,h2,h3,h4{font-family:'Montserrat',sans-serif;font-weight:800;line-height:1.15;letter-spacing:-.025em}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap');
+.label{
+  font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent3);
+}
+.sec-title{font-size:clamp(1.7rem,3.5vw,2.6rem);color:var(--txt);margin-bottom:14px}
+.sec-sub{font-size:1rem;color:var(--txt2);max-width:560px;margin:0 auto;line-height:1.8}
+
+/* ============================================================
+   NAV
+============================================================ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav);z-index:900;
+  display:flex;align-items:center;justify-content:space-between;padding:0 22px;
+  background:rgba(8,8,16,.7);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--border);
+  transition:background .35s var(--ease);
+}
+[data-theme="light"] .topnav{background:rgba(242,244,250,.82)}
+
+.burger{
+  width:44px;height:44px;border-radius:10px;border:1px solid var(--border);
+  background:var(--glass2);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:5.5px;
+  transition:all .28s var(--ease);
+}
+.burger:hover{background:var(--accent);border-color:var(--accent)}
+.burger span{display:block;width:19px;height:2px;background:var(--txt);border-radius:2px;transition:all .3s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.burger:hover span{background:#fff}
+
+.nav-brand{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.18rem;color:var(--txt)}
+.nav-brand em{font-style:normal;color:var(--accent3)}
+
+/* ============================================================
+   SIDE MENU
+============================================================ */
+.overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
+}
+.overlay.on{opacity:1;pointer-events:all}
+
+.sidemenu{
+  position:fixed;top:0;left:0;bottom:0;z-index:1100;
+  width:min(340px,86vw);
+  background:var(--menu-bg);
+  border-right:1px solid var(--border);
+  backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
+  transform:translateX(-500%);
+  transition:transform .42s cubic-bezier(.25,.46,.45,.94);
+  display:flex;flex-direction:column;padding:22px;overflow-y:auto;
+}
+.sidemenu.on{transform:translateX(0)}
+
+.menu-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:22px;margin-bottom:24px;border-bottom:1px solid var(--border);
+}
+.menu-brand{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.15rem;color:var(--txt)}
+.menu-brand em{font-style:normal;color:var(--accent3)}
+.close-btn{
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--border);background:var(--glass2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--txt);font-size:1.3rem;line-height:1;
+  transition:all .35s var(--ease);
+}
+.close-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.menu-nav{display:flex;flex-direction:column;gap:3px;flex:1}
+.mlink{
+  display:flex;align-items:center;gap:13px;padding:13px 15px;
+  border-radius:10px;color:var(--txt2);
+  font-family:'Montserrat',sans-serif;font-weight:600;font-size:.95rem;
+  transition:all .25s var(--ease);position:relative;overflow:hidden;
+}
+.mlink::before{
+  content:'';position:absolute;inset:0;border-radius:10px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);z-index:0;
+}
+.mlink span{position:relative;z-index:1}
+.mlink svg{position:relative;z-index:1;width:18px;height:18px;flex-shrink:0}
+.mlink:hover{color:var(--txt);padding-left:19px}
+.mlink:hover::before{transform:scaleX(1)}
+
+.menu-sep{height:1px;background:var(--border);margin:14px 0}
+
+.menu-foot{padding-top:20px;border-top:1px solid var(--border)}
+.theme-btn{
+  display:flex;align-items:center;gap:12px;width:100%;padding:13px 15px;
+  border-radius:10px;border:1px solid var(--border);background:var(--glass);
+  color:var(--txt);font-family:'Montserrat',sans-serif;font-weight:600;font-size:.88rem;
+  transition:all 1.15s var(--ease);
+}
+.theme-btn:hover{border-color:var(--accent2);background:var(--glass2)}
+.toggle-pill{
+  width:44px;height:24px;border-radius:12px;background:var(--glass2);
+  border:1px solid var(--border);margin-left:auto;position:relative;transition:all .3s var(--ease);
+}
+.toggle-pill::after{
+  content:'';position:absolute;width:18px;height:18px;border-radius:50%;
+  background:var(--txt);top:2px;left:2px;transition:all .53s var(--ease);
+}
+[data-theme="light"] .toggle-pill{background:var(--accent);border-color:var(--accent)}
+[data-theme="light"] .toggle-pill::after{transform:translateX(20px);background:#fff}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero{
+  position:center;min-height:100vh;display:flex;
+  align-items:center;justify-content:center;overflow:hidden;
+  padding-top:var(--nav);
+}
+
+#hcvs{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+.hero-grad{
+  position:absolute;inset:0;pointer-events:none;background-repeat: repeat; 
+  background-position:center center; background-size:cover;
+  
+  background-image:radial-gradient(circle at center, rgba(0,0,0,0.7)0%, 
+  rgba(0,0,0,0.3)50%, transparent 65%),url(1780775295249.png)
+  
+    /* radial-gradient(ellipse 75% 55% at 50% 55%,rgba(20,40,160,.14) 0%,transparent 68%),
+    radial-gradient(ellipse 35% 40% at 15% 75%,rgba(20,40,160,.09) 0%,transparent 60%),
+    radial-gradient(ellipse 30% 35% at 85% 20%,rgba(196,200,216,.06) 0%,transparent 55%); */
+
+}
+
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:56px 56px;opacity:.45;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 30%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 30%,transparent 100%);
+}
+
+.hero-follow{
+  position:absolute;pointer-events:none;
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(20,40,160,.25) 0%,transparent 80%);
+  transform:translate(-50%,-50%);
+  transition:left .6s ease,top .6s ease;
+  left:50%;top:50%;
+}
+
+.hero-con{
+  position:relative;z-index:10;text-align:center;
+  padding:90px 24px 70px;max-width:var(--mw);margin:0 auto;
+  transform: translateY(-8px);
+  margin-top:-8px;
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:5px 18px;border-radius:100px;
+  background:var(--glass2);border:1px solid var(--border2);
+  font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--silver);
+  margin-bottom:26px;backdrop-filter:blur(10px);
+  animation:fadedown 1.8s both;
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent3);animation:blink 2.2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1.6)}50%{opacity:.4;transform:scale(1.6)}}
+
+.hero-h1{
+  font-family:'Orbitron', 'Montserrat', sans-serif;
+  font-size:clamp(5rem,8.8vw,7rem);
+  font-weight:800;
+  letter-spacing:-.04em;line-height:1.02;
+  text-shadow:0 4px 18px rgba(0,0,0,.35);
+  margin-bottom:14px;
+  animation:fadeup 1.6s .1s both;
+}
+.h1-main{
+  display:inline-block;
+  background:linear-gradient(135deg,#eff8ff 0%,#c7d2fe 40%,#92a7ff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.h1-accent{
+  display:block;
+  margin-top:2px;
+  background:linear-gradient(135deg,var(--accent-cyan),var(--accent-violet),#ffffff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:0 0 18px rgba(0,242,255,.18);
+}
+
+.hero-sub{
+  font-family:'Space Grotesk', 'Montserrat', sans-serif;
+  font-size:clamp(.98rem,2vw,1.18rem);
+  font-weight:600;
+  color:#9edcff;
+  max-width:700px;margin:0 auto 18px;
+  text-shadow:0 2px 12px rgba(0,0,0,.25);
+  animation:fadeup .8s .3s both;
+  margin-top:4px;
+}
+
+.hero-p{
+  font-family:'Space Grotesk', 'Montserrat', sans-serif;
+  font-size:.98rem;
+  color:rgba(220,232,255,.82);
+  max-width:640px;
+  margin:0 auto 40px;line-height:1.45;
+  animation:fadeup .9s .4s both;
+}
+
+.hero-btns{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  animation:fadeup .8s .75s both;
+  margin-bottom: 50px;
+}
+
+.btn-p{
+  display:inline-flex;align-items:center;gap:8px;padding:15px 34px;
+  background:var(--accent);color:#ffffff;font-family:'Montserrat',sans-serif;
+  font-weight:700;font-size:.9rem;border-radius:10px;border:2px solid var(--accent);
+  transition:all .4s var(--ease);position:relative;overflow:hidden;
+}
+.btn-p::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.18),transparent 70%);
+  transform:translateX(-100%);transition:transform .55s ease;
+}
+.btn-p:hover{background:var(--accent2);transform:translateY(-2px) scale(1.02);box-shadow:0 10px 32px rgba(20,40,160,.5)}
+.btn-p:hover::after{transform:translateX(100%)}
+
+.btn-s{
+  display:inline-flex;align-items:center;gap:8px;padding:15px 34px;
+  background:var(--accent3);color:#000c1b;font-family:'Montserrat',sans-serif;
+  font-weight:700;font-size:.9rem;border-radius:10px;border:2px solid var(--border);
+  transition:all .3s var(--ease);
+}
+.btn-s:hover{border-color:var(--silver2);background:var(--glass2);transform:translateY(-2px)}
+
+.scroll-ind{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:7px;
+  animation:fadein 1s 1.6s both;
+}
+.scroll-t{
+  font-size:.65rem;font-family:'Montserrat',sans-serif;font-weight:900;
+  color:var(--accent-cyan);letter-spacing:.25em;text-transform:uppercase;
+  text-shadow: 0 0 10px var(--glow-cyan);
+  animation: bounce 2.2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(12px); }
+}
+
+/* ============================================================
+   SECTION WRAPPER
+============================================================ */
+.sec{padding:96px 24px}
+.sec-c{text-align:center;margin-bottom:56px}
+
+/* ============================================================
+   TRUST STRIP
+============================================================ */
+.trust{
+  padding:24px 24px;
+  background:var(--bg2);
+  border-top:3px solid var(--border2);border-bottom:3px solid var(--border2);
+}
+.trust-grid{
+  max-width:var(--mw);margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:20px;
+}
+.titem{
+  text-align:center;padding:28px 18px;background:var(--glass);
+  border-radius:var(--r);border:1.5px solid var(--border);
+  transition:all .35s var(--ease);
+}
+.titem:hover{transform:translateY(-4px);border-color:var(--border2);box-shadow:0 0 50px var(--glow2)}
+.tnum{
+  font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;
+  color:var(--accent3);line-height:1;margin-bottom:5px;
+}
+.tlbl{font-size:.88rem;font-weight:600;color:var(--txt2);font-family:'Montserrat',sans-serif}
+
+/* ============================================================
+   PRODUCTS
+============================================================ */
+.products{background:var(--bg)}
+.pgrid{
+  max-width:var(--mw);margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px;
+}
+
+.pcard{
+  background:var(--glass);border:2px solid var(--border);
+  border-radius:var(--r2);overflow:hidden;
+  transition:all .4s var(--ease);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.pcard:hover{transform:translateY(-8px);border-color:var(--border2);box-shadow:var(--shadow),0 0 40px var(--glow2)}
+
+.pimg{
+  height:210px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.pimg-bg{
+  position:absolute;inset:0;
+  transition:transform .5s var(--ease);
+}
+.pcard:hover .pimg-bg{transform:scale(1.06)}
+
+.pdevice{position:relative;z-index:2}
+
+/* Laptop mockup */
+.lp{
+  width:100px;height:62px;border-radius:6px 6px 0 0;position:relative;
+  border:2px solid rgba(255,255,255,.12);
+  background:linear-gradient(150deg,#1c1c20 0%,#111115 100%);
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  transition:transform .55s var(--ease);
+}
+.pcard:hover .lp{transform:rotate(-2deg) scale(1.05)}
+.lp-scr{
+  position:absolute;inset:4px;border-radius:3px;
+  background:linear-gradient(160deg,rgba(20,45,180,.4),rgba(5,15,70,.6));
+}
+.lp-base{
+  position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+  width:120px;height:6px;background:#2c2c30;border-radius:0 0 8px 8px;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+/* Tablet mockup */
+.tab{
+  width:94px;height:124px;border-radius:10px;position:relative;
+  border:2px solid rgba(255,255,255,.12);
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+  transition:transform .55s var(--ease);
+  background:linear-gradient(150deg,#0d1b55 0%,#040b22 100%);
+}
+.pcard:hover .tab{transform:rotate(3deg) scale(1.05)}
+.tab-scr{
+  position:absolute;inset:5px;border-radius:7px;
+  background:linear-gradient(160deg,rgba(20,45,180,.5),rgba(5,15,70,.7));
+}
+
+/* Glasses mockup */
+.gls{
+  width:110px;height:40px;display:flex;gap:10px;align-items:center;justify-content:center;
+  position:relative;transition:transform .55s var(--ease);
+}
+.pcard:hover .gls{transform:translateY(-5px) scale(1.08)}
+.gls-lens{
+  width:45px;height:35px;border-radius:12px 12px 20px 20px;
+  border:2px solid rgba(0,242,255,.3);
+  background:rgba(0,242,255,.05);
+  backdrop-filter:blur(4px);position:relative;
+}
+.gls-lens::after{
+  content:'';position:absolute;top:5px;left:5px;width:15px;height:2px;
+  background:rgba(0,242,255,.4);border-radius:2px;
+}
+.gls-bridge{
+  width:12px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;
+}
+
+/* Phone mockup */
+.ph{
+  width:66px;height:136px;border-radius:12px;position:relative;
+  border:2px solid rgba(255,255,255,.12);
+  box-shadow:0 26px 50px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .55s var(--ease);
+}
+.pcard:hover .ph{transform:rotate(5deg) scale(1.09)}
+.ph-screen{
+  position:absolute;inset:1.7px 1.5px;border-radius:10px;overflow:hidden;
+}
+.ph-screen::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:45%;
+  background:linear-gradient(180deg,rgba(255,255,255,.08) 0%,transparent 100%);
+}
+.ph-island{
+  position:absolute;top:4px;left:50%;transform:translateX(-50%);
+  width:24px;height:6px;background:rgba(0,0,0,.9);border-radius:8px;z-index:3;
+}
+.ph-hole{
+  position:absolute;top:4px;left:50%;transform:translateX(-50%);
+  width:7px;height:7px;background:rgba(0,0,0,.85);border-radius:50%;z-index:3;
+}
+
+/* Watch mockup */
+.wch{
+  width:76px;height:88px;border-radius:22px;
+  background:linear-gradient(140deg,#252535 0%,#181828 100%);
+  border:2.7px solid rgba(255,255,255,.12);position:relative;
+  box-shadow:0 16px 50px rgba(0,0,0,.55);
+  transition:transform .55s var(--ease);
+}
+.pcard:hover .wch{transform:rotate(-3deg) scale(1.07)}
+.wch-scr{
+  position:absolute;inset:5.5px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(20,40,160,.6),rgba(0,0,0,.8));
+  display:flex;align-items:center;justify-content:center;
+}
+
+
+.wch-crown{
+  position:absolute;right:-7px;top:27%;transform:translateY(-50%);
+  width:7px;height:10px;background:rgba(180,185,210,.35);border-radius:4px;
+}
+.wch-crown::after{
+  content:""; position:absolute; right:px; top:27px; width:7px; height:19px; 
+  background:rgba(180,185,210,.35); border-radius:4px;
+}
+
+/* Tech Stack Mockups */
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: var(--mw);
+  margin: 0 auto;
+}
+.t-core {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+.t-core:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 30px var(--glow-cyan);
+}
+.t-viz {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+/* React Atom */
+.re-atom {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 20px var(--accent-cyan);
+  position: relative;
+}
+.re-orbit {
+  position: absolute; top: 50%; left: 50%;
+  width: 120px; height: 40px;
+  border: 2px solid var(--accent-cyan);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: orbit 3s linear infinite;
+  opacity: 0.6;
+}
+.re-orbit:nth-child(2) { transform: translate(-50%, -50%) rotate(60deg); animation-delay: -1s; }
+.re-orbit:nth-child(3) { transform: translate(-50%, -50%) rotate(-60deg); animation-delay: -2s; }
+@keyframes orbit {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Node Hex */
+.no-hex {
+  width: 80px; height: 90px;
+  background: #339933;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  animation: pulse-hex 2s ease-in-out infinite;
+}
+.no-hex::after {
+  content: 'JS'; font-weight: 900; color: #fff; font-size: 1.5rem;
+}
+@keyframes pulse-hex {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0px #339933; }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px #339933; }
+}
+
+.t-info { text-align: center; }
+.t-name { font-size: 1.5rem; margin-bottom: 10px; color: var(--txt); }
+.t-desc { font-size: 0.9rem; color: var(--txt2); line-height: 1.6; }
+.t-data {
+  margin-top: 20px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  display: flex; justify-content: center; gap: 15px;
+}
+.t-data span { border: 1px solid var(--hud-line); padding: 2px 8px; border-radius: 4px; }
+
+/* Console mockup */
+.ps6{
+  width:50px;height:140px;background:#fff;border-radius:20% 80% 20% 80% / 10% 10% 10% 10%;
+  position:relative;border:1px solid rgba(0,0,0,.1);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);transition:transform .55s var(--ease);
+  background:linear-gradient(180deg,#fff 0%,#e0e0e0 100%);
+}
+.pcard:hover .ps6{transform:rotate(-5deg) scale(1.05)}
+.ps6::after{
+  content:'';position:absolute;inset:4px;background:#000;
+  border-radius:inherit;opacity:.9;
+}
+.ps6-glow{
+  position:absolute;top:20%;left:50%;transform:translateX(-50%);
+  width:2px;height:60%;background:var(--accent-cyan);
+  box-shadow:0 0 10px var(--accent-cyan);z-index:2;
+}
+
+/* Earbuds mockup */
+.ebs{display:flex;gap:27px;align-items:flex-end}
+.eb{
+  width:26px;height:40px;
+  background:linear-gradient(180deg,rgba(45,45,65,1.9),rgba(25,25,45,.9));
+  border:1.5px solid rgba(255,255,255,.12);border-radius:50% 50% 30% 30%;
+  position:relative;transition:transform .55s var(--ease);
+}
+.pcard:hover .eb:first-child{transform:rotate(-20deg) translateY(-4px)}
+.pcard:hover .eb:last-child{transform:rotate(20deg) translateY(-4px) scaleX(-1)}
+.eb:last-child{transform:scaleX(-1)}
+.eb-tip{
+  position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+  width:13px;height:12px;border-radius:50%;background:rgba(255,255,255,.07);
+}
+
+.pinfo{padding:18px 20px 22px}
+.pcat{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--accent3);font-family:'Montserrat',sans-serif;margin-bottom:5px}
+.pname{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:700;color:var(--txt);margin-bottom:5px}
+.pdesc{font-size:.83rem;color:var(--txt2);margin-bottom:14px;line-height:1.25}
+.pfooter{display:flex;align-items:center;justify-content:space-between}
+.pprice-lbl{font-size:.67rem;color:var(--txt3);line-height:1;margin-bottom:2px}
+.pprice{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:900;color:var(--txt)}
+.btn-v{
+  padding:10px 12px;background:var(--accent);color:#fff;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:.78rem;
+  border-radius:8px;transition:all .25s var(--ease);
+}
+.btn-v:hover{background:var(--accent2);transform:scale(1.06);box-shadow:0 4px 16px rgba(20,40,160,.5)}
+
+/* ============================================================
+   FEATURES
+============================================================ */
+.features{background:var(--bg2)}
+.fgrid{
+  max-width:var(--mw);margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:22px;
+}
+.fcard{
+  padding:34px 26px;background:var(--glass);border:1px solid var(--border);
+  border-radius:var(--r2);text-align:center;transition:all .4s var(--ease);
+  position:relative;overflow:hidden;cursor:pointer;
+}
+.fcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);
+}
+.fcard:hover::before{transform:scaleX(1)}
+.fcard:hover{transform:translateY(-6px);border-color:var(--border2);box-shadow:0 0 35px var(--glow2)}
+
+.ficon{
+  width:62px;height:62px;margin:0 auto 18px;border-radius:var(--r);
+  background:linear-gradient(135deg,rgba(20,40,160,.22),rgba(20,40,160,.07));
+  border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+}
+.ficon svg{width:26px;height:26px;color:var(--accent3)}
+.ftitle{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:9px}
+.ftxt{font-size:.88rem;color:var(--txt2);line-height:1.72}
+
+/* ============================================================
+   REVIEWS
+============================================================ */
+.reviews-wrap{
+  max-width:var(--mw);margin:0 auto;position:relative;
+}
+.rv-container{overflow:hidden;border-radius:var(--r2)}
+.rv-track{display:flex;transition:transform 1s cubic-bezier(.4,0,.2,1)}
+.rv-card{flex:0 0 33.333%;padding:0 10px}
+@media(max-width:900px){.rv-card{flex:0 0 50%}}
+@media(max-width:580px){.rv-card{flex:0 0 100%}}
+
+.rv-inner{
+  background:var(--glass);border:1px solid var(--border);border-radius:var(--r2);
+  padding:26px;transition:all .3s var(--ease);
+}
+.rv-inner:hover{border-color:var(--border2);box-shadow:0 0 28px var(--glow2)}
+.stars{color:#feb820;font-size:1rem;letter-spacing:6px;margin-bottom:13px}
+.rv-txt{font-size:.9rem;color:var(--txt2);line-height:1.72;margin-bottom:18px;font-style:italic}
+.rv-author{display:flex;align-items:center;gap:11px}
+.rv-av{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:850;font-size:.9rem;color:#fff;
+  flex-shrink:0;
+}
+.rv-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.98rem;color:var(--txt)}
+.rv-loc{font-size:.70rem;color:var(--txt3)}
+
+.cc{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:28px}
+.cdot{
+  width:7px;height:7px;border-radius:50%;background:var(--border);
+  cursor:pointer;transition:all .88s var(--ease);
+}
+.cdot.a{width:26px;border-radius:4px;background:var(--accent3)}
+.cbtn{
+  width:38px;height:38px;border-radius:50%;background:var(--glass2);
+  border:1px solid var(--border);color:var(--txt);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .35s var(--ease);
+}
+.cbtn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.cbtn svg{width:15px;height:15px}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about{background:var(--bg2);text-align:center}
+.about-inner{max-width:740px;margin:0 auto}
+.about-txt{font-size:1rem;color:var(--txt2);line-height:1.90;margin-bottom:32px}
+.about-line{width:56px;height:3px;background:linear-gradient(90deg,var(--accent),var(--silver));border-radius:2px;margin:0 auto}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact{background:var(--bg);text-align:center}
+.cicons{display:flex;gap:28px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:14px}
+.citem{display:flex;flex-direction:column;align-items:center}
+.clink{
+  width:68px;height:68px;border-radius:50%;background:var(--glass2);
+  border:2px dotted var(--border);display:flex;align-items:center;justify-content:center;
+  transition:all .42s var(--ease);position:relative;overflow:hidden;
+}
+.clink::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  transform:scale(0);transition:transform .45s cubic-bezier(.4,0,.2,1);
+  background:var(--pc,var(--accent));
+}
+.clink:hover{transform:translateY(-7px) scale(1.1);border-color:transparent;box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.clink:hover::before{transform:scale(1)}
+.clink svg{width:30px;height:30px;position:relative;z-index:1;transition:all .25s var(--ease)}
+.clbl{display:block;font-size:.73rem;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--txt3);margin-top:9px;transition:color .25s var(--ease)}
+.citem:hover .clbl{color:var(--txt2)}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  padding:30px 24px;
+  text-align:center;
+}
+footer::before,
+footer::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:999px;
+  filter:blur(10px);
+  pointer-events:none;
+}
+footer::before{
+  top:-40px;
+  width:min(420px, 88vw);
+  height:80px;
+  background:linear-gradient(90deg, transparent, rgba(0,242,255,0.12), rgba(188,0,255,0.12), transparent);
+}
+footer::after{
+  bottom:0;
+  width:100%;
+  height:2px;
+  background:linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-violet), transparent);
+  opacity:.8;
+}
+.futuristic-footer{position:relative;z-index:1}
+.footer-shell{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  gap:18px;
+  justify-items:center;
+}
+.footer-brand{display:grid;gap:8px;justify-items:center}
+.ft-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.55rem;color:var(--txt);margin-bottom:2px}
+.ft-logo em{font-style:normal;color:var(--accent3)}
+.ft-tag{font-size:.86rem;color:var(--txt3);font-style:italic}
+.footer-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.footer-badges span,
+.footer-status{
+  border:1px solid var(--border);
+  background:var(--glass2);
+  color:var(--txt2);
+  border-radius:999px;
+  padding:8px 10px;
+  font-size:.72rem;
+  font-family:'Montserrat',sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.02), 0 8px 20px rgba(0,0,0,0.12);
+}
+[data-theme="light"] .footer-badges span,
+[data-theme="light"] .footer-status{
+  background:rgba(255,255,255,0.9);
+  color:var(--txt);
+  border-color:var(--border);
+}
+.footer-status{display:inline-flex;align-items:center;gap:8px}
+.status-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent-cyan),var(--accent-violet));
+  box-shadow:0 0 0 0 rgba(0,242,255,0.45), 0 0 10px rgba(0,242,255,0.5);
+  animation:pulse 1.7s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,242,255,0.45)}70%{box-shadow:0 0 0 10px rgba(0,242,255,0)}100%{box-shadow:0 0 0 0 rgba(0,242,255,0)}}
+.ft-copy{font-size:.65rem;color:var(--txt3);font-family:'Montserrat',sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+
+/* ============================================================
+   SCROLL ANIMATIONS
+============================================================ */
+.fu{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.fu.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ============================================================
+   KEYFRAMES
+============================================================ */
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes fadeup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadedown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:768px){
+  .sec{padding:68px 18px}
+  .pgrid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .fgrid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-p,.btn-s{width:100%;max-width:275px;justify-content:center}
+}
+@media(max-width:480px){
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .pgrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<!-- NOISE GRAIN -->
+<svg style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:.022;mix-blend-mode:overlay" aria-hidden="true">
+  <filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#n)"/>
+</svg>
+
+<!-- ======== NAV ======== -->
+<nav class="topnav" role="navigation">
+  <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#home" class="nav-brand" aria-label="Daniel Gadgets home">Daniel<em>Gadgets</em></a>
+  <div class="nav-right" style="display:flex;align-items:center;gap:15px">
+    <button class="nav-icon" id="userBtn" aria-label="Account" style="color:var(--txt);transition:transform 0.3s var(--ease)">
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ======== SIDE MENU OVERLAY ======== -->
+<div class="overlay" id="overlay" aria-hidden="true"></div>
+
+<!-- ======== SIDE MENU ======== -->
+<aside class="sidemenu" id="sidemenu" role="navigation" aria-label="Site navigation">
+  <div class="menu-head">
+    <div class="menu-brand">Daniel<em>Gadgets</em></div>
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="menu-nav">
+    <a href="#home"     class="mlink" onclick="closeMenu()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Home</span></a>
+    <a href="javascript:void(0)" class="mlink" onclick="closeMenu(); openAuth();"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg><span>My Account</span></a>
+    <a href="#products" class="mlink" onclick="closeMenu()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg><span>Products</span></a>
+    <a href="#reviews"  class="mlink" onclick="closeMenu()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg><span>Reviews</span></a>
+    <a href="#about"    class="mlink" onclick="closeMenu()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>About Us</span></a>
+    <a href="#contact"  class="mlink" onclick="closeMenu()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span>Contact</span></a>
+  </nav>
+  <div class="menu-sep"></div>
+  <div class="menu-foot">
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">
+      <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path stroke-linecap="round" d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <span id="tLabel">Switch to Light</span>
+      <div class="toggle-pill"></div>
+    </button>
+  </div>
+</aside>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  <canvas id="hcvs" aria-hidden="true"></canvas>
+
+  <div class="hero-grad"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-follow" id="hFollow" aria-hidden="true"></div>
+
+  <div class="hero-con">
+    <div class="hero-badge"><span class="badge-dot"></span>Premium Technology Store</div>
+    <h1 class="hero-h1">
+      <span class="h1-main">Daniel</span>
+      <span class="h1-accent">Gadgets</span>
+    </h1>
+    <p class="hero-sub">Your Trusted Destination for Premium Smartphones, Accessories, and Cutting-Edge Technology.</p>
+    <p class="hero-p">Experience authentic Samsung, Apple and Various devices backed by reliability, quality assurance, and exceptional customer service. We bring the latest technology closer to you with confidence and peace of mind.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-p">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        Shop Now
+      </a>
+      <a href="#products" class="btn-s">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        Explore Products
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-ind" aria-hidden="true">
+    <span class="scroll-t">Scroll</span>
+  </div>
+</section>
+
+<!-- ======== TRUST ======== -->
+<section class="trust" aria-label="Store credentials" style="position:relative">
+  <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  <div class="trust-grid">
+    <div class="titem fu">
+      <div class="tnum" data-to="5500" data-sfx="+">0</div>
+      <div class="tlbl">Happy Customers</div>
+    </div>
+    <div class="titem fu d1">
+      <div class="tnum" data-to="4.9" data-sfx="/5" data-dec="1">0</div>
+      <div class="tlbl">Average Rating</div>
+    </div>
+    <div class="titem fu d2">
+      <div class="tnum" data-to="100" data-sfx="%">0</div>
+      <div class="tlbl">Genuine Products</div>
+    </div>
+    <div class="titem fu d3">
+      <div class="tnum" data-to="48" data-sfx="hrs">0</div>
+      <div class="tlbl">Fast Nationwide Delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PRODUCTS ======== -->
+<section class="sec products" id="products" aria-labelledby="ph" style="position:relative">
+  <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  <div class="sec-c fu">
+    <div class="label">Our Collection</div>
+    <h2 class="sec-title" id="ph">Featured Products</h2>
+    <p class="sec-sub">Curated premium smartphones, wearables, and accessories sourced from certified suppliers.</p>
+  </div>
+
+  <div class="p-filters fu">
+    <button class="f-btn active" data-filter="all">All</button>
+    <button class="f-btn" data-filter="phones">Phones</button>
+    <button class="f-btn" data-filter="laptops">Laptops</button>
+    <button class="f-btn" data-filter="accessories">Accessories</button>
+  </div>
+
+  <div class="pgrid">
+
+    <!-- Samsung Galaxy S25 Ultra -->
+    <article class="pcard fu" data-category="phones">
+      <div class="stock-badge"><span class="stock-dot"></span>In Stock</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Processor</span><span class="pspec-val">SD 8 Gen 4</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">6.8" AMOLED 2X</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Camera</span><span class="pspec-val">200MP Quad</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Battery</span><span class="pspec-val">5000mAh</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(14,30,120,.38),rgba(5,12,55,.45))"></div>
+        <div class="pdevice">
+          <div class="ph" style="background:linear-gradient(150deg,#0d1b55 0%,#08123a 55%,#040b22 100%)">
+            <div class="ph-hole"></div>
+            <div class="ph-screen" style="background:linear-gradient(160deg,rgba(20,45,180,.55),rgba(5,15,70,.7))"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Samsung Galaxy</div>
+        <h3 class="pname">Galaxy S25 Ultra</h3>
+        <p class="pdesc">Titanium build, 200MP camera system, built-in S-Pen, Galaxy AI.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦1,110,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- iPhone 16 Pro Max -->
+    <article class="pcard fu d1" data-category="phones">
+      <div class="stock-badge"><span class="stock-dot"></span>2 Left</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Chipset</span><span class="pspec-val">A18 Pro Bionic</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">6.9" ProMotion</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Storage</span><span class="pspec-val">256GB - 1TB</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Video</span><span class="pspec-val">4K 120fps ProRes</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(170,175,200,.12),rgba(90,95,115,.18))"></div>
+        <div class="pdevice">
+          <div class="ph" style="background:linear-gradient(150deg,#2c2c30 0%,#1c1c20 50%,#111115 100%);border-color:rgba(192,196,216,.28)">
+            <div class="ph-island"></div>
+            <div class="ph-screen" style="background:linear-gradient(160deg,rgba(150,158,200,.25),rgba(55,58,80,.45))"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Apple iPhone</div>
+        <h3 class="pname">iPhone 16 Pro Max</h3>
+        <p class="pdesc">A18 Pro chip, 64MP Fusion Camera, Action Button, titanium design.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦1,200,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Apple Watch -->
+    <article class="pcard fu d2" data-category="accessories">
+      <div class="stock-badge"><span class="stock-dot"></span>In Stock</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Sensor</span><span class="pspec-val">Blood Oxygen</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">OLED Always-On</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Rating</span><span class="pspec-val">WR50 Water Res.</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Battery</span><span class="pspec-val">18-36 Hours</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(130,140,200,.1),rgba(70,80,140,.15))"></div>
+        <div class="pdevice">
+          <div class="wch">
+            <div class="wch-scr">
+              <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="rgba(90,150,255,.75)" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <div class="wch-crown"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Smart Watch</div>
+        <h3 class="pname">Apple Watch Series 10</h3>
+        <p class="pdesc">Thinnest Apple Watch ever, advanced health monitoring, 18 hr battery.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦350,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Galaxy Buds 3 Pro -->
+    <article class="pcard fu d3" data-category="accessories">
+      <div class="stock-badge"><span class="stock-dot"></span>High Demand</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Audio</span><span class="pspec-val">Hi-Fi 24-bit</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">ANC</span><span class="pspec-val">Intelligent</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Connectivity</span><span class="pspec-val">BT 5.4</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Battery</span><span class="pspec-val">30hrs w/ Case</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(20,40,160,.22),rgba(8,18,80,.28))"></div>
+        <div class="pdevice">
+          <div class="ebs">
+            <div class="eb"><div class="eb-tip"></div></div>
+            <div class="eb"><div class="eb-tip"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Wireless Earbuds</div>
+        <h3 class="pname">Galaxy Buds 3 Pro</h3>
+        <p class="pdesc">Intelligent ANC, 3-way speaker system, 360° audio, 30 hr total battery.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦98,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- iPhone 15 -->
+    <article class="pcard fu d1" data-category="phones">
+      <div class="stock-badge"><span class="stock-dot"></span>In Stock</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Chip</span><span class="pspec-val">A16 Bionic</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">Super Retina XDR</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Camera</span><span class="pspec-val">48MP Main</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Port</span><span class="pspec-val">USB-C</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(18,94,160,.16),rgba(140,92,255,.14),rgba(6,18,45,.22))"></div>
+        <div class="pdevice">
+          <div class="ph" style="background:linear-gradient(150deg,#10253f 0%,#0a1629 52%,#050b16 100%);border-color:rgba(125,211,252,.25);box-shadow:0 18px 32px rgba(15,23,42,.35)">
+            <div class="ph-island" style="background:linear-gradient(135deg,rgba(56,189,248,.55),rgba(14,165,233,.12));border-color:rgba(125,211,252,.18)"></div>
+            <div class="ph-screen" style="background:linear-gradient(160deg,rgba(56,189,248,.28),rgba(20,184,166,.18),rgba(15,23,42,.7))"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Apple iPhone</div>
+        <h3 class="pname">iPhone 15</h3>
+        <p class="pdesc">48MP main camera, Dynamic Island, USB-C, A16 Bionic chip.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦850,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Samsung Galaxy A55 -->
+    <article class="pcard fu d2" data-category="phones">
+      <div class="stock-badge"><span class="stock-dot"></span>In Stock</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Processor</span><span class="pspec-val">Exynos 1480</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">120Hz AMOLED</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Protection</span><span class="pspec-val">IP67 Rated</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Battery</span><span class="pspec-val">5000mAh</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(34,197,94,.16),rgba(16,185,129,.14),rgba(7,23,19,.24))"></div>
+        <div class="pdevice">
+          <div class="ph" style="background:linear-gradient(150deg,#153522 0%,#0c2118 52%,#05110b 100%);border-color:rgba(134,239,172,.22);box-shadow:0 18px 32px rgba(4,12,9,.35)">
+            <div class="ph-hole" style="background:rgba(17,24,39,.85)"></div>
+            <div class="ph-screen" style="background:linear-gradient(160deg,rgba(74,222,128,.25),rgba(16,185,129,.18),rgba(6,78,59,.62))"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Samsung Galaxy</div>
+        <h3 class="pname">Galaxy A55</h3>
+        <p class="pdesc">50MP OIS camera, Exynos 1480, IP67 water resistance, Super AMOLED.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦320,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- MacBook Pro M4 -->
+    <article class="pcard fu" data-category="laptops">
+      <div class="stock-badge"><span class="stock-dot"></span>New Arrival</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Processor</span><span class="pspec-val">Apple M4 Max</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">14" Liquid Retina</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Memory</span><span class="pspec-val">36GB - 128GB</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Battery</span><span class="pspec-val">Up to 22 Hours</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(100,100,100,.1),rgba(40,40,40,.2))"></div>
+        <div class="pdevice">
+          <div class="lp">
+            <div class="lp-scr"></div>
+            <div class="lp-base"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Apple Laptop</div>
+        <h3 class="pname">MacBook Pro M4</h3>
+        <p class="pdesc">The world's most advanced laptop for workflows that demand extreme performance.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦2,450,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- iPad Pro M4 -->
+    <article class="pcard fu d1" data-category="accessories">
+      <div class="stock-badge"><span class="stock-dot"></span>In Stock</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">Ultra Retina XDR</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Chip</span><span class="pspec-val">Apple M4</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Design</span><span class="pspec-val">5.1mm Ultra Thin</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Input</span><span class="pspec-val">Pencil Pro Support</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(188,0,255,.1),rgba(60,0,100,.2))"></div>
+        <div class="pdevice">
+          <div class="tab">
+            <div class="tab-scr"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Apple Tablet</div>
+        <h3 class="pname">iPad Pro 13" (M4)</h3>
+        <p class="pdesc">Unbelievable performance and the world's most advanced display.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦1,550,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Smart AR Glasses -->
+    <article class="pcard fu d2" data-category="accessories">
+      <div class="stock-badge"><span class="stock-dot"></span>Limited</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Visuals</span><span class="pspec-val">HUD AR Overlay</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Camera</span><span class="pspec-val">12MP Ultra-wide</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">AI</span><span class="pspec-val">Voice Controlled</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Audio</span><span class="pspec-val">Open-ear Spatial</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(0,242,255,.1),rgba(0,80,120,.2))"></div>
+        <div class="pdevice">
+          <div class="gls">
+            <div class="gls-lens"></div>
+            <div class="gls-bridge"></div>
+            <div class="gls-lens"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Smart Wearable</div>
+        <h3 class="pname">Cyber Glass AR</h3>
+        <p class="pdesc">Next-gen smart eyeglasses with integrated AR display and AI vision.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦420,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Dell XPS 16 (2026) -->
+    <article class="pcard fu" data-category="laptops">
+      <div class="stock-badge"><span class="stock-dot"></span>In Stock</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Processor</span><span class="pspec-val">Core Ultra 9 185H</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Graphics</span><span class="pspec-val">RTX 4070 8GB</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Display</span><span class="pspec-val">4K OLED Touch</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Design</span><span class="pspec-val">Seamless Glass</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(200,200,200,.1),rgba(80,80,80,.15))"></div>
+        <div class="pdevice">
+          <div class="lp" style="background:linear-gradient(150deg,#3a3a40 0%,#222228 100%)">
+            <div class="lp-scr" style="background:linear-gradient(160deg,rgba(100,150,255,.4),rgba(20,30,80,.6))"></div>
+            <div class="lp-base" style="background:#4a4a50"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Dell Laptop</div>
+        <h3 class="pname">Dell XPS 16 (2026)</h3>
+        <p class="pdesc">The iconic seamless design powered by the latest Intel Core Ultra processors.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦2,150,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Alienware m18 R2 -->
+    <article class="pcard fu d1" data-category="laptops">
+      <div class="stock-badge"><span class="stock-dot"></span>In Stock</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Processor</span><span class="pspec-val">i9-14900HX</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Graphics</span><span class="pspec-val">RTX 4090 16GB</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Refresh</span><span class="pspec-val">480Hz QHD+</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Cooling</span><span class="pspec-val">Cryo-Tech Liquid</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(188,0,255,.15),rgba(50,0,100,.2))"></div>
+        <div class="pdevice">
+          <div class="lp" style="background:linear-gradient(150deg,#111 0%,#000 100%);border-color:var(--accent-violet)">
+            <div class="lp-scr" style="background:linear-gradient(160deg,rgba(188,0,255,.3),rgba(40,0,80,.5))"></div>
+            <div class="lp-base" style="background:#1a1a1a;border-color:var(--accent-violet)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Gaming Laptop</div>
+        <h3 class="pname">Alienware m18 R2</h3>
+        <p class="pdesc">Maximum performance with an 18-inch display and elite Alienware Cryo-tech.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦3,850,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Sony PlayStation 6 -->
+    <article class="pcard fu d2" data-category="accessories">
+      <div class="stock-badge"><span class="stock-dot"></span>Pre-Order</div>
+      <div class="pspecs">
+        <div class="pspec-row"><span class="pspec-lbl">Resolution</span><span class="pspec-val">Native 16K HDR</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Graphics</span><span class="pspec-val">Ray Tracing Gen 3</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Storage</span><span class="pspec-val">4TB Quantum SSD</span></div>
+        <div class="pspec-row"><span class="pspec-lbl">Feature</span><span class="pspec-val">Neural Haptic Link</span></div>
+        <button class="btn-v" style="margin-top:15px" onclick="goWA()">Order Now</button>
+      </div>
+      <div class="pimg">
+        <div class="pimg-bg" style="background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(0,242,255,.1))"></div>
+        <div class="pdevice">
+          <div class="ps6">
+            <div class="ps6-glow"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pcat">Gaming Console</div>
+        <h3 class="pname">PlayStation 6</h3>
+        <p class="pdesc">The future of immersive gaming with 16K visuals and advanced neural feedback.</p>
+        <div class="pfooter">
+          <div><div class="pprice-lbl">Price</div><div class="pprice">₦950,000</div></div>
+          <button class="btn-v" onclick="goWA()">View Details</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ======== FEATURES ======== -->
+<section class="sec features" id="why" aria-labelledby="fh" style="position:relative">
+  <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  <div class="sec-c fu">
+    <div class="label">Why Us</div>
+    <h2 class="sec-title" id="fh">Why Choose Daniel Gadgets</h2>
+    <p class="sec-sub">A premium technology shopping experience you can trust, every single time.</p>
+  </div>
+  <div class="fgrid">
+    <div class="fcard fu">
+      <div class="ficon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+      <h3 class="ftitle">Authentic Products</h3>
+      <p class="ftxt">Only genuine gadgets sourced from certified trusted suppliers. Every device ships with manufacturer warranty and seal intact.</p>
+    </div>
+    <div class="fcard fu d1">
+      <div class="ficon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg></div>
+      <h3 class="ftitle">Reliable Customer Service</h3>
+      <p class="ftxt">Dedicated support before and after every purchase. We are always available to resolve your concerns promptly and professionally.</p>
+    </div>
+    <div class="fcard fu d2">
+      <div class="ficon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+      <h3 class="ftitle">Fast Delivery</h3>
+      <p class="ftxt">Quick and secure delivery nationwide. Your device arrives safely packaged and on time, every time.</p>
+    </div>
+    <div class="fcard fu d3">
+      <div class="ficon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+      <h3 class="ftitle">Affordable Pricing</h3>
+      <p class="ftxt">Competitive pricing without compromising quality. Get exceptional value for every premium technology purchase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== REVIEWS ======== -->
+<section class="sec" id="reviews" style="background:var(--bg);position:relative" aria-labelledby="rh">
+  <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  <div class="sec-c fu">
+    <div class="label">Testimonials</div>
+    <h2 class="sec-title" id="rh">Customer Reviews</h2>
+    <p class="sec-sub">Real experiences from customers across Nigeria who trust Daniel Gadgets.</p>
+  </div>
+  <div class="reviews-wrap fu">
+    <div class="rv-container">
+      <div class="rv-track" id="rvTrack">
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"Excellent service and authentic products. My iPhone arrived exactly as described — sealed and brand new. Will absolutely shop here again!"</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#1428A0,#00020bd5)">CA</div>
+            <div><div class="rv-name">Chinedu A.</div><div class="rv-loc">Lagos, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"Very reliable store. The Samsung Galaxy device I purchased works perfectly. Great customer service and very fair pricing."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#000000,#1a9050)">GO</div>
+            <div><div class="rv-name">Grace O.</div><div class="rv-loc">Abuja, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"Fast delivery and professional communication throughout. Highly recommended for anyone looking for genuine gadgets at reasonable prices."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#501090,#0c0412)">ME</div>
+            <div><div class="rv-name">Michael E.</div><div class="rv-loc">Port Harcourt, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"Passionate and dedicated services. I highly recommend this brand for anyone looking for genuine gadgets at affordable prices."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#8f0c54,#7a990b)">OE</div>
+            <div><div class="rv-name">Obong E.</div><div class="rv-loc">Calabar, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"My package arrived completely sealed, 100% original, and beautifully boxed. Absolute peace of mind!"</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#036308,#6b13b4)">CA</div>
+            <div><div class="rv-name">Chioma A.</div><div class="rv-loc">Enugu, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"I bought a smartwatch in the morning, and it was in my hands before evening. The customer service team kept me updated every step of the way."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#2e0755,#c10194)">TO</div>
+            <div><div class="rv-name">Tunde O.</div><div class="rv-loc">Ibadan, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"Bought a pair of wireless earbuds and a laptop charger. Both work perfectly and the sound quality on the buds is exceptional."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#0e5b5c,#fff200)">AM</div>
+            <div><div class="rv-name">Amina M.</div><div class="rv-loc">Wuse Abuja, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"I was incredibly skeptical about buying a high-end device online, but Daniel Gadgets proved me wrong. I can assure you that it's a reliable brand."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#d2375e,#050304)">AA</div>
+            <div><div class="rv-name">Clement I.</div><div class="rv-loc">Oyo, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"Purchased an Apple Watch and I am completely blown away by the quality. The team was responsive and helpful every step of the process."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#c7be0f,#621126)">AA</div>
+            <div><div class="rv-name">Amaka A.</div><div class="rv-loc">Enugu, Nigeria</div></div>
+          </div>
+        </div></div>
+
+        <div class="rv-card"><div class="rv-inner">
+          <div class="stars">★★★★★</div>
+          <p class="rv-txt">"Best gadget store I have encountered online. The authenticity guarantee gives me confidence every time I place an order. A truly 10/10 experience."</p>
+          <div class="rv-author">
+            <div class="rv-av" style="background:linear-gradient(135deg,#431b00,#015570)">OB</div>
+            <div><div class="rv-name">Oluwaseun B.</div><div class="rv-loc">Ibadan, Nigeria</div></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+    <div class="cc">
+      <button class="cbtn" id="rvPrev" aria-label="Previous"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+      <div id="rvDots" style="display:flex;gap:8px;align-items:center"></div>
+      <button class="cbtn" id="rvNext" aria-label="Next"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ABOUT ======== -->
+<section class="sec about" id="about" aria-labelledby="ah" style="position:relative">
+  <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  <div class="about-inner fu">
+    <div class="label">Our Story</div>
+    <h2 class="sec-title" id="ah">About Daniel Gadgets</h2>
+    <p class="about-txt">Daniel Gadgets has built a reputation for delivering premium smartphones and technology products with integrity, professionalism, and customer satisfaction at the core of our operations.
+       Our mission is to connect customers with the latest innovations while providing a secure and trustworthy shopping experience.</p>
+    <div class="about-line"></div>
+  </div>
+</section>
+
+<!-- ======== CONTACT ======== -->
+<section class="sec contact" id="contact" aria-labelledby="ch" style="position:relative">
+  <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+  <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  <div class="sec-c fu">
+    <div class="label">Get In Touch</div>
+    <h2 class="sec-title" id="ch">Connect With Us</h2>
+    <p class="sec-sub">Reach out through any of our platforms — we are here to help you find the perfect device.</p>
+  </div>
+  <div class="cicons fu">
+
+    <!-- WhatsApp -->
+    <div class="citem">
+      <a href="https://wa.me/2349132715125" target="_blank" rel="noopener noreferrer" class="clink" style="--pc:#25D366" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="#25D366" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <span class="clbl">WhatsApp</span>
+    </div>
+
+    <!-- Telegram -->
+    <div class="citem">
+      <a href="https://t.me/DanielClothings000" target="_blank" rel="noopener noreferrer" class="clink" style="--pc:#0088cc" aria-label="Chat on Telegram">
+        <svg viewBox="0 0 24 24" fill="#0088cc" width="30" height="30"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </a>
+      <span class="clbl">Telegram</span>
+    </div>
+
+    <!-- TikTok -->
+    <div class="citem">
+      <a href="https://tiktok.com/@danielclothings_" target="_blank" rel="noopener noreferrer" class="clink" style="--pc:#010101" aria-label="Follow on TikTok">
+        <svg viewBox="0 0 24 24" fill="var(--txt)" width="30" height="30"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+      <span class="clbl">TikTok</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer role="contentinfo" class="futuristic-footer">
+  <div class="footer-shell">
+    <div class="footer-brand">
+      <div class="ft-logo">Daniel<em>Gadgets</em></div>
+      <p class="ft-tag">"Premium Technology. Trusted Services."</p>
+      <div class="footer-badges">
+        <span>24/7 Support</span>
+        <span>Authentic Devices</span>
+        <span>Nationwide Delivery</span>
+      </div>
+    </div>
+    <div class="footer-status"><span class="status-dot"></span>Live inventory sync</div>
+  </div>
+  <p class="ft-copy">© 2026 Daniel Gadgets. All Rights Reserved.</p>
+</footer>
+
+<!-- ======== AUTH MODAL ======== -->
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose">&times;</button>
+    
+    <!-- Login Form -->
+    <div id="loginForm">
+      <div class="auth-header">
+        <h2 class="auth-title">Welcome Back</h2>
+        <p class="auth-sub">Enter your credentials to access your account</p>
+      </div>
+      <form class="auth-form" id="lForm">
+        <div class="auth-input-group">
+          <label class="auth-label">Email Address</label>
+          <input type="email" id="lEmail" class="auth-input" placeholder="name@example.com" required>
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-label">Password</label>
+          <input type="password" id="lPass" class="auth-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="auth-btn">Login</button>
+      </form>
+      <div class="auth-switch">
+        Don't have an account? <span class="auth-switch-btn" id="toRegister">Create Account</span>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm">
+      <div class="auth-header">
+        <h2 class="auth-title">Create Account</h2>
+        <p class="auth-sub">Join Daniel Gadgets for a premium experience</p>
+      </div>
+      <form class="auth-form" id="rForm">
+        <div class="auth-input-group">
+          <label class="auth-label">Full Name</label>
+          <input type="text" id="rName" class="auth-input" placeholder="John Doe" required>
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-label">Email Address</label>
+          <input type="email" id="rEmail" class="auth-input" placeholder="name@example.com" required>
+        </div>
+        <div class="auth-input-group">
+          <label class="auth-label">Create Password</label>
+          <input type="password" id="rPass" class="auth-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="auth-btn">Create Account</button>
+      </form>
+      <div class="auth-switch">
+        Already have an account? <span class="auth-switch-btn" id="toLogin">Sign In</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   AUTH MODAL LOGIC
+============================================================ */
+const authOverlay = document.getElementById('authOverlay');
+const userBtn = document.getElementById('userBtn');
+const authClose = document.getElementById('authClose');
+const toRegister = document.getElementById('toRegister');
+const toLogin = document.getElementById('toLogin');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const lForm = document.getElementById('lForm');
+const rForm = document.getElementById('rForm');
+
+function openAuth() {
+  authOverlay.classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeAuth() {
+  authOverlay.classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+function updateUserUI(name) {
+  if (!name) return;
+  const initial = name.charAt(0).toUpperCase();
+  userBtn.innerHTML = `<div class="user-avatar">${initial}</div>`;
+  localStorage.setItem('dg_user', name);
+}
+
+userBtn.addEventListener('click', openAuth);
+authClose.addEventListener('click', closeAuth);
+authOverlay.addEventListener('click', (e) => e.target === authOverlay && closeAuth());
+
+toRegister.addEventListener('click', () => {
+  loginForm.style.display = 'none';
+  registerForm.style.display = 'block';
+});
+toLogin.addEventListener('click', () => {
+  registerForm.style.display = 'none';
+  loginForm.style.display = 'block';
+});
+
+lForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('lEmail').value;
+  // Mock login: use email prefix as name
+  const mockName = email.split('@')[0];
+  updateUserUI(mockName);
+  closeAuth();
+});
+
+rForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('rName').value;
+  updateUserUI(name);
+  closeAuth();
+});
+
+// Check for existing user on load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedUser = localStorage.getItem('dg_user');
+  if (savedUser) updateUserUI(savedUser);
+});
+
+/* ============================================================
+   PRODUCT FILTERING
+============================================================ */
+const filterBtns = document.querySelectorAll('.f-btn');
+const pCards = document.querySelectorAll('.pcard');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    pCards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.style.display = 'block';
+        setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0) scale(1)'; }, 10);
+      } else {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px) scale(0.95)';
+        setTimeout(() => { card.style.display = 'none'; }, 400);
+      }
+    });
+  });
+});
+
+/* ============================================================
+   SCROLL PARALLAX (HUD CORNERS)
+============================================================ */
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  document.querySelectorAll('.hud-corner').forEach(corner => {
+    const speed = corner.classList.contains('hud-tl') || corner.classList.contains('hud-tr') ? 0.05 : -0.05;
+    corner.style.transform = `translateY(${scrolled * speed}px)`;
+  });
+}, { passive: true });
+
+/* ============================================================
+   THEME & INITIALIZATION
+============================================================ */
+const html = document.documentElement;
+const tBtn = document.getElementById('themeBtn');
+const tLabel = document.getElementById('tLabel');
+
+function setTheme(t) {
+  html.setAttribute('data-theme', t);
+  localStorage.setItem('dg_theme', t);
+  tLabel.textContent = t === 'dark' ? 'Switch to Light' : 'Switch to Dark';
+}
+setTheme(localStorage.getItem('dg_theme') || 'dark');
+tBtn.addEventListener('click', () => setTheme(html.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+/* ============================================================
+   MAGNETIC BUTTONS
+============================================================ */
+const magneticButtons = document.querySelectorAll('.btn-p, .btn-s, .btn-v');
+magneticButtons.forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.02)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+/* ============================================================
+   CLICKABLE REVIEWS
+============================================================ */
+document.querySelectorAll('.rv-inner').forEach(card => {
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => {
+    window.open('https://t.me/DanielClothings000', '_blank');
+  });
+});
+
+/* ============================================================
+   TEXT SCRAMBLE EFFECT
+============================================================ */
+class TextScramble {
+  constructor(el) {
+    this.el = el;
+    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.update = this.update.bind(this);
+  }
+  setText(newText) {
+    const oldText = this.el.innerText;
+    const length = Math.max(oldText.length, newText.length);
+    const promise = new Promise((resolve) => this.resolve = resolve);
+    this.queue = [];
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random() * 40);
+      const end = start + Math.floor(Math.random() * 40);
+      this.queue.push({ from, to, start, end });
+    }
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+    this.update();
+    return promise;
+  }
+  update() {
+    let output = '';
+    let complete = 0;
+    for (let i = 0, n = this.queue.length; i < n; i++) {
+      let { from, to, start, end, char } = this.queue[i];
+      if (this.frame >= end) {
+        complete++;
+        output += to;
+      } else if (this.frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = this.randomChar();
+          this.queue[i].char = char;
+        }
+        output += `<span class="d-char">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+    this.el.innerHTML = output;
+    if (complete === this.queue.length) {
+      this.resolve();
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
+    }
+  }
+  randomChar() {
+    return this.chars[Math.floor(Math.random() * this.chars.length)];
+  }
+}
+
+// Scramble headers on visibility
+const scrambleIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entries[0].isIntersecting) {
+      const fx = new TextScramble(entry.target);
+      fx.setText(entry.target.getAttribute('data-text') || entry.target.innerText);
+      scrambleIO.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.sec-title, .h1-main, .h1-accent').forEach(el => {
+  el.setAttribute('data-text', el.innerText);
+  scrambleIO.observe(el);
+});
+
+/* ============================================================
+   MENU
+============================================================ */
+const burger = document.getElementById('burgerBtn');
+const overlay = document.getElementById('overlay');
+const menu = document.getElementById('sidemenu');
+const closeB = document.getElementById('closeBtn');
+
+function openMenu() {
+  menu.classList.add('on');
+  overlay.classList.add('on');
+  burger.classList.add('open');
+  burger.setAttribute('aria-expanded', 'true');
+  overlay.removeAttribute('aria-hidden');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  menu.classList.remove('on');
+  overlay.classList.remove('on');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+burger.addEventListener('click', () => menu.classList.contains('on') ? closeMenu() : openMenu());
+closeB.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+document.addEventListener('keydown', e => e.key === 'Escape' && closeMenu());
+
+/* ============================================================
+   HERO CANVAS — FLOATING DEVICES
+============================================================ */
+const cvs = document.getElementById('hcvs');
+const ctx = cvs.getContext('2d');
+let scrollTop = 0, devs = [], raf;
+
+function rrect(c, x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  c.beginPath();
+  c.moveTo(x + r, y); c.lineTo(x + w - r, y);
+  c.arcTo(x + w, y, x + w, y + r, r); c.lineTo(x + w, y + h - r);
+  c.arcTo(x + w, y + h, x + w - r, y + h, r); c.lineTo(x + r, y + h);
+  c.arcTo(x, y + h, x, y + h - r, r); c.lineTo(x, y + r);
+  c.arcTo(x, y, x + r, y, r); c.closePath();
+}
+
+function drawDevice(c, x, y, w, h, rot, alpha, isSam) {
+  c.save();
+  c.globalAlpha = alpha;
+  c.translate(x, y);
+  c.rotate(rot);
+
+  c.shadowColor = isSam ? 'var(--accent-cyan)' : 'var(--accent-violet)';
+  c.shadowBlur = 20;
+
+  const g = c.createLinearGradient(-w / 2, -h / 2, w / 2, h / 2);
+  if (isSam) {
+    g.addColorStop(0, 'rgba(0,242,255,0.3)');
+    g.addColorStop(1, 'rgba(0,100,255,0.1)');
+  } else {
+    g.addColorStop(0, 'rgba(188,0,255,0.3)');
+    g.addColorStop(1, 'rgba(100,0,255,0.1)');
+  }
+  rrect(c, -w / 2, -h / 2, w, h, w * .12);
+  c.fillStyle = g; c.fill();
+
+  c.shadowBlur = 0;
+  c.strokeStyle = isSam ? 'var(--accent-cyan)' : 'var(--accent-violet)';
+  c.lineWidth = 1; c.stroke();
+
+  rrect(c, -w / 2 + w * .07, -h / 2 + h * .1, w * .86, h * .72, w * .09);
+  c.fillStyle = 'rgba(255,255,255,0.05)'; c.fill();
+  c.restore();
+}
+
+function initDevs() {
+  const W = cvs.offsetWidth || window.innerWidth;
+  const H = cvs.offsetHeight || window.innerHeight;
+  const cx = W / 2, cy = H / 2;
+  devs = [];
+  const cnt = Math.min(20, Math.floor(W / 50));
+  for (let i = 0; i < cnt; i++) {
+    const p = i / cnt;
+    const th = p * Math.PI * 6;
+    const r = 80 + p * Math.min(W, H) * .45;
+    devs.push({
+      bx: cx + Math.cos(th) * r,
+      by: cy + Math.sin(th) * r * .6,
+      w: 30 + Math.random() * 20,
+      rot: Math.random() * Math.PI * 2,
+      sam: Math.random() > 0.5,
+      sp: 0.15 + Math.random() * 0.2,
+      px: Math.random() * Math.PI * 2,
+      py: Math.random() * Math.PI * 2,
+      pf: (0.05 + Math.random() * 0.1) * (Math.random() > .5 ? 1 : -1),
+      a: 0.2 + Math.random() * 0.4,
+      fx: 10 + Math.random() * 15,
+      fy: 12 + Math.random() * 18,
+    });
+  }
+}
+
+function draw(ts) {
+  const t = ts * .001;
+  const W = cvs.offsetWidth;
+  const H = cvs.offsetHeight;
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw network lines
+  ctx.beginPath();
+  ctx.strokeStyle = 'var(--hud-line)';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i < devs.length; i++) {
+    for (let j = i + 1; j < devs.length; j++) {
+      const d1 = devs[i], d2 = devs[j];
+      const x1 = d1.bx + Math.sin(t * d1.sp + d1.px) * d1.fx;
+      const y1 = d1.by + Math.cos(t * d1.sp * .7 + d1.py) * d1.fy + scrollTop * d1.pf * .2;
+      const x2 = d2.bx + Math.sin(t * d2.sp + d2.px) * d2.fx;
+      const y2 = d2.by + Math.cos(t * d2.sp * .7 + d2.py) * d2.fy + scrollTop * d2.pf * .2;
+      const dist = Math.hypot(x1 - x2, y1 - y2);
+      if (dist < 200) {
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+      }
+    }
+  }
+  ctx.stroke();
+
+  devs.forEach(d => {
+    const fx = Math.sin(t * d.sp + d.px) * d.fx;
+    const fy = Math.cos(t * d.sp * .7 + d.py) * d.fy;
+    const po = scrollTop * d.pf * .28;
+    const dw = d.w, dh = dw * 2.1;
+    drawDevice(ctx, d.bx + fx, d.by + fy + po, dw, dh, d.rot + t * 0.2, d.a, d.sam);
+  });
+  raf = requestAnimationFrame(draw);
+}
+
+function resize() {
+  const rect = cvs.parentElement.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  cvs.width = rect.width * dpr;
+  cvs.height = rect.height * dpr;
+  cvs.style.width = rect.width + 'px';
+  cvs.style.height = rect.height + 'px';
+  ctx.scale(dpr, dpr);
+  initDevs();
+}
+
+window.addEventListener('load', () => { resize(); raf = requestAnimationFrame(draw); });
+window.addEventListener('resize', () => { clearTimeout(window._rt); window._rt = setTimeout(resize, 200); });
+window.addEventListener('scroll', () => { scrollTop = window.scrollY; }, { passive: true });
+
+/* ============================================================
+   HERO MOUSE GLOW
+============================================================ */
+const hFollow = document.getElementById('hFollow');
+document.querySelector('.hero').addEventListener('mousemove', e => {
+  const r = e.currentTarget.getBoundingClientRect();
+  const x = e.clientX - r.left;
+  const y = e.clientY - r.top;
+  hFollow.style.left = x + 'px';
+  hFollow.style.top = y + 'px';
+}, { passive: true });
+
+/* ============================================================
+   SCROLL ANIMATIONS
+============================================================ */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+  });
+}, { threshold: .12, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.fu').forEach(el => io.observe(el));
+
+/* ============================================================
+   ANIMATED COUNTERS
+============================================================ */
+function animNum(el) {
+  const to = parseFloat(el.dataset.to);
+  const sfx = el.dataset.sfx || '';
+  const dec = el.dataset.dec === '1';
+  const dur = 2000;
+  const t0 = performance.now();
+  (function tick(now) {
+    const prog = Math.min((now - t0) / dur, 1);
+    const ease = 1 - Math.pow(1 - prog, 3);
+    el.textContent = (dec ? (to * ease).toFixed(1) : Math.floor(to * ease).toLocaleString()) + sfx;
+    if (prog < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+const cio = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animNum(e.target); cio.unobserve(e.target); } });
+}, { threshold: .5 });
+document.querySelectorAll('.tnum').forEach(el => cio.observe(el));
+
+/* ============================================================
+   REVIEWS CAROUSEL
+============================================================ */
+const track = document.getElementById('rvTrack');
+const dotsW = document.getElementById('rvDots');
+const TOTAL = 10;
+let cur = 0, spv = 3, maxS = 0, autoT;
+
+function getSPV() { return window.innerWidth <= 580 ? 1 : window.innerWidth <= 900 ? 2 : 3; }
+
+function buildDots() {
+  spv = getSPV();
+  maxS = Math.max(0, TOTAL - spv);
+  dotsW.innerHTML = '';
+  for (let i = 0; i <= maxS; i++) {
+    const d = document.createElement('button');
+    d.className = 'cdot' + (i === cur ? ' a' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i + 1));
+    d.addEventListener('click', () => go(i));
+    dotsW.appendChild(d);
+  }
+}
+
+function go(i) {
+  cur = Math.max(0, Math.min(i, maxS));
+  track.style.transform = `translateX(-${cur * (100 / spv)}%)`;
+  dotsW.querySelectorAll('.cdot').forEach((d, j) => d.classList.toggle('a', j === cur));
+}
+
+function next() { go(cur >= maxS ? 0 : cur + 1); }
+function prev() { go(cur <= 0 ? maxS : cur - 1); }
+function startAuto() { autoT = setInterval(next, 4200); }
+function resetAuto() { clearInterval(autoT); startAuto(); }
+
+document.getElementById('rvNext').addEventListener('click', () => { next(); resetAuto(); });
+document.getElementById('rvPrev').addEventListener('click', () => { prev(); resetAuto(); });
+
+buildDots(); startAuto();
+window.addEventListener('resize', () => { buildDots(); go(cur); });
+
+/* ============================================================
+   NAV SCROLL SHADOW
+============================================================ */
+const topnav = document.querySelector('.topnav');
+window.addEventListener('scroll', () => {
+  topnav.style.boxShadow = window.scrollY > 40 ? '0 4px 28px rgba(0,0,0,.35)' : 'none';
+}, { passive: true });
+
+/* ============================================================
+   UTILITY
+============================================================ */
+function goWA() { window.open('https://wa.me/2349132715125', '_blank', 'noopener,noreferrer'); }
+function openTikTok() { window.open('https://www.tiktok.com/@danielclothings_', '_blank', 'noopener,noreferrer'); }
+
+const productCards = document.querySelectorAll('.pcard');
+productCards.forEach(card => {
+  card.addEventListener('click', (event) => {
+    if (event.target.closest('.btn-v')) return;
+    goWA();
+  });
+});
+
+const productButtons = document.querySelectorAll('.pcard .btn-v');
+productButtons.forEach(btn => {
+  btn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    goWA();
+  });
+});
+
+const featureCards = document.querySelectorAll('.fcard');
+featureCards.forEach(card => {
+  card.addEventListener('click', () => openTikTok());
+});
+
+const tiktokLink = document.querySelector('.citem a[href*="tiktok"]');
+if (tiktokLink) {
+  tiktokLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    openTikTok();
+  });
+}
+</script>
+
+</body>
+</html>
